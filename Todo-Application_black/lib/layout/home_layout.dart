@@ -24,7 +24,7 @@ class HomeLayout extends StatelessWidget {
 //cubit.titles[cubit.bottomNavigtionIndex],
             return Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.amber.shade700,
               key: scaffoldKey,
               body: cubit.screens[cubit.bottomNavigtionIndex],
               floatingActionButton: FloatingActionButton(
@@ -142,73 +142,9 @@ class HomeLayout extends StatelessWidget {
                                                   },
                                                   prefix: Icons.title,
                                                 ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                DefaultFormField(
-                                                    onTap: () {
-                                                      showTimePicker(
-                                                              context: context,
-                                                              initialTime:
-                                                                  TimeOfDay
-                                                                      .now())
-                                                          .then((value) =>
-                                                              timeController
-                                                                      .text =
-                                                                  value!.format(
-                                                                      context));
-                                                    },
-                                                    controller: timeController,
-                                                    label: 'Task Time',
-                                                    type:
-                                                        TextInputType.datetime,
-                                                    validate: (String? value) {
-                                                      if (value!.isEmpty) {
-                                                        return 'Time must not be empty';
-                                                      }
-                                                      return null;
-                                                    },
-                                                    prefix: Icons
-                                                        .watch_later_outlined),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                DefaultFormField(
-                                                    onTap: () {
-                                                      print('Tapped');
-                                                      showDatePicker(
-                                                              context: context,
-                                                              initialDate:
-                                                                  DateTime
-                                                                      .now(),
-                                                              firstDate:
-                                                                  DateTime
-                                                                      .now(),
-                                                              lastDate: DateTime
-                                                                  .parse(
-                                                                      '2021-10-03'))
-                                                          .then((value) =>
-                                                              dateController
-                                                                  .text = DateFormat
-                                                                      .yMMMd()
-                                                                  .format(
-                                                                      value!));
-                                                    },
-                                                    controller: dateController,
-                                                    label: 'Task Deadline',
-                                                    type:
-                                                        TextInputType.datetime,
-                                                    validate: (String? value) {
-                                                      if (value!.isEmpty) {
-                                                        return 'Date must not be empty';
-                                                      }
 
-                                                      return null;
-                                                    },
-                                                    prefix:
-                                                        Icons.calendar_today),
                                                 SizedBox(
-                                                  height: 320,
+                                                  height: 340,
                                                 ),
                                               ],
                                             ),
@@ -234,30 +170,6 @@ class HomeLayout extends StatelessWidget {
                         true, Icon(Icons.add, color: Colors.amber[700]));
                   }
                 },
-              ),
-              bottomNavigationBar: Container(
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(color: Colors.white10, width: 1))),
-                child: BottomNavigationBar(
-                    unselectedItemColor: Colors.grey,
-                    backgroundColor: Color(0x95171717),
-                    selectedItemColor: Colors.amber[700],
-                    currentIndex: cubit.bottomNavigtionIndex,
-                    onTap: (index) {
-                      cubit.changeIndex(index);
-                    },
-                    type: BottomNavigationBarType.fixed,
-                    items: [
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.menu), label: 'Tasks'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.check_circle_outline),
-                          label: 'Done'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.archive_outlined),
-                          label: 'Archived'),
-                    ]),
               ),
             );
           }),

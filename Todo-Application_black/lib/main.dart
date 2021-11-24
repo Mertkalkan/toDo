@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           /* dark theme settings */
           ),
       //themeMode: ThemeMode.dark,
-      title: 'Todo',
+      title: 'Yoro',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

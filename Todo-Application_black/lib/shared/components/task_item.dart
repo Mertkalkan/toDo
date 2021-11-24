@@ -41,46 +41,6 @@ class TaskItem extends StatelessWidget {
               AppCubit.get(context).deleteFromDatabase(tasks!['id']);
             },
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(15),
-                bottomRight: Radius.circular(15)),
-            child: IconSlideAction(
-              closeOnTap: true,
-              caption: 'Archive',
-              color: Colors.grey[800],
-              icon: Icons.archive,
-              onTap: () {
-                AppCubit.get(context).updateDatabase('archived', tasks!['id']);
-              },
-            ),
-          ),
-        ],
-        secondaryActions: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15), bottomLeft: Radius.circular(15)),
-            child: tasks!['status'] == 'archived' || tasks!['status'] == 'done'
-                ? IconSlideAction(
-                    closeOnTap: true,
-                    caption: 'Add',
-                    color: Colors.amber[700],
-                    icon: Icons.add,
-                    onTap: () {
-                      AppCubit.get(context).updateDatabase('New', tasks!['id']);
-                    },
-                  )
-                : IconSlideAction(
-                    closeOnTap: true,
-                    caption: 'Done',
-                    color: Colors.green,
-                    icon: Icons.check_circle,
-                    onTap: () {
-                      AppCubit.get(context)
-                          .updateDatabase('done', tasks!['id']);
-                    },
-                  ),
-          ),
         ],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,14 +70,6 @@ class TaskItem extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Deadline - $date',
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 10,
-                                  fontFamily: 'NotoSans'),
-                            ),
-
                             Text(
                               tasks!['title'],
                               maxLines: 2,

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/shared/components/task_item.dart';
-import 'package:todo_app/shared/constants/constants.dart';
 import 'package:todo_app/shared/cubit/cubit.dart';
 import 'package:todo_app/shared/cubit/states.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class NewTasksScreen extends StatelessWidget {
   @override
@@ -25,20 +23,17 @@ class NewTasksScreen extends StatelessWidget {
                   SizedBox(
                     height: 100,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
+                   Center(
                     child: Text(
-                      'Todo',
+                      'Yoro',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 35,
-                          fontFamily: 'Helvetica',
+                          fontFamily: 'Game Of Squids',
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
                   Padding(
                     padding: const EdgeInsets.only(left: 18),
                     child: tasks.length > 0
@@ -66,19 +61,11 @@ class NewTasksScreen extends StatelessWidget {
                               tasks: tasks[index],
                             );
                           },
-                          // separatorBuilder: (context, index) => Padding(
-                          //       padding: const EdgeInsets.only(left: 20),
-                          //       child: Container(
-                          //         width: double.infinity,
-                          //         height: 1.0,
-                          //         color: Colors.grey[200],
-                          //       ),
-                          //     ),
                           itemCount: tasks.length)
                       : Container(
                           child: Center(
                               child: Image.asset(
-                          'images/nodata2.png',
+                          'images/task.png',
                           height: 350,
                           width: 350,
                         ))),

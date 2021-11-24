@@ -38,9 +38,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/nodata.png
-    - images/nodata2.png      
+    - images/task.png
   fonts:
+    - family: Game Of Squids
+      fonts:
+        - asset: fonts/Game Of Squids.ttf
+
     - family: Source Sans Pro
       fonts:
         - asset: fonts/SourceSansPro-Regular.ttf
@@ -53,10 +56,6 @@ flutter:
     - family: NotoSans
       fonts:
         - asset: fonts/NotoSans-Regular.ttf
-
-    - family: Helvetica
-      fonts:
-        - asset: fonts/helvetica-heavy.ttf    
 
     
   #

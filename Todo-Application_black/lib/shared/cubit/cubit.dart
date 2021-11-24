@@ -3,10 +3,7 @@ import 'package:todo_app/shared/cubit/states.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/modules/new_tasks/new_tasks_screen.dart';
-import 'package:todo_app/modules/done_tasks/done_tasks_screen.dart';
-import 'package:todo_app/modules/archived_tasks/archived_tasks_screen.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/shared/constants/constants.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -14,17 +11,13 @@ class AppCubit extends Cubit<AppStates> {
   static AppCubit get(context) => BlocProvider.of(context);
 
   List<Map> newTasks = [];
-  List<Map> doneTasks = [];
-  List<Map> archivedTasks = [];
 
   int bottomNavigtionIndex = 0;
   List<Widget> screens = [
     NewTasksScreen(),
-    DoneTasksScreen(),
-    ArchivedTasksScreen()
   ];
   Database? database;
-  List<String> titles = ['Todo Tasks', 'Done Tasks', 'Archived Tasks'];
+  List<String> titles = ['Todo Tasks'];
   bool isBottomSheetShown = false;
   Icon floatingButtonIcon = Icon(Icons.edit);
 
@@ -78,18 +71,12 @@ class AppCubit extends Cubit<AppStates> {
 
   void getDataBase(database) async {
     newTasks = [];
-    doneTasks = [];
-    archivedTasks = [];
     database!.rawQuery('SELECT * FROM tasks').then((value) {
       //print(value);
       value.forEach((element) {
         print(element['id']);
         if (element['status'] == 'New') {
           newTasks.add(element);
-        } else if (element['status'] == 'done') {
-          doneTasks.add(element);
-        } else {
-          archivedTasks.add(element);
         }
       });
       emit(AppGetDatabaseState());
